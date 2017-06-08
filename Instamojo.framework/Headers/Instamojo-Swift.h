@@ -162,7 +162,7 @@ SWIFT_PROTOCOL("_TtP9Instamojo21JuspayRequestCallBack_")
 @class NSCoder;
 
 SWIFT_CLASS("_TtC9Instamojo12CardFormView")
-@interface CardFormView : UIViewController <UITextFieldDelegate, JuspayRequestCallBack>
+@interface CardFormView : UIViewController <JuspayRequestCallBack, UITextFieldDelegate>
 @property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified payButton;
 @property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified cvvTextField;
 @property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified expiryDateTextField;
@@ -236,7 +236,7 @@ SWIFT_CLASS("_TtC9Instamojo10EMIOptions")
 @class UITableViewCell;
 
 SWIFT_CLASS("_TtC9Instamojo14EMIOptionsView")
-@interface EMIOptionsView : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface EMIOptionsView : UIViewController <UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, weak) IBOutlet UITableView * _Null_unspecified emiOptionsTableView;
 @property (nonatomic, strong) NSMutableArray * _Null_unspecified values;
 @property (nonatomic, strong) Order * _Null_unspecified order;
@@ -254,6 +254,7 @@ SWIFT_CLASS("_TtC9Instamojo14EMIOptionsView")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class UINavigationController;
 
 SWIFT_CLASS("_TtC9Instamojo9Instamojo")
 @interface Instamojo : NSObject
@@ -275,6 +276,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL instance;)
   @param order Order
 */
 + (void)invokePaymentOptionsViewWithOrder:(Order * _Nonnull)order;
++ (void)invokePaymentOptionsViewControllerWithNavigationController:(UINavigationController * _Nullable)navigationController order:(Order * _Nonnull)order;
 /**
   Invoke Payment For Custom UI
   @param params BrowserParams
@@ -290,7 +292,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL instance;)
 @class UISearchController;
 
 SWIFT_CLASS("_TtC9Instamojo15ListOptionsView")
-@interface ListOptionsView : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating>
+@interface ListOptionsView : UIViewController <UIScrollViewDelegate, UITableViewDataSource, UISearchResultsUpdating, UITableViewDelegate>
 @property (nonatomic, weak) IBOutlet UITableView * _Null_unspecified banksTableView;
 @property (nonatomic, copy) NSString * _Null_unspecified paymentOption;
 @property (nonatomic, strong) Order * _Null_unspecified order;
@@ -406,7 +408,7 @@ SWIFT_PROTOCOL("_TtP9Instamojo20OrderRequestCallBack_")
 
 
 SWIFT_CLASS("_TtC9Instamojo18PaymentOptionsView")
-@interface PaymentOptionsView : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface PaymentOptionsView : UIViewController <UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, weak) IBOutlet UITableView * _Null_unspecified paymentOptionsTableView;
 @property (nonatomic, strong) Order * _Null_unspecified order;
 @property (nonatomic, strong) NSMutableArray * _Nonnull paymentOptions;
