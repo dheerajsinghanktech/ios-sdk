@@ -79,6 +79,15 @@ public class Instamojo: NSObject {
         }
     }
     
+    public class func invokePaymentOptionsView(navigationController: UINavigationController?, order: Order) {
+        self.resetDefaults()
+        let storyBoard: UIStoryboard = Constants.getStoryboardInstance()
+        if let viewController: PaymentOptionsView = storyBoard.instantiateViewController(withIdentifier: Constants.PaymentOptionsViewController) as? PaymentOptionsView {
+            viewController.order = order
+            navigationController?.pushViewController(viewController, animated: true)
+        } 
+    }
+    
     /**
      * Invoke Payment For Custom UI
      *
